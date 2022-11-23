@@ -1,0 +1,411 @@
+NODE.JS : Entorno de ejecución de JavaScript construido con el motor de JavaScript V8 de Chrome. Es un entorno de tiempo de ejecución multiplataforma, de código abierto, para la capa del servidor. Se utiliza principalmente para crear aplicaciones de red escalables. Está diseñado para ser eficiente y fácil de usar. El ecosistema de paquetes de Node.js, npm, es el ecosistema más grande de librerías de código abierto en el mundo.
+
+NPM : Node Package Manager, es el administrador de paquetes para Node.js. Es el ecosistema de paquetes más grande del mundo, y el ecosistema más grande de librerías de código abierto en el mundo.
+
+NPX : Node Package Executor, es un ejecutor de paquetes de Node.js. Es un ejecutor de línea de comandos que viene con npm 5.2+ y ejecuta paquetes binarios de Node.js. Es una herramienta para ejecutar paquetes de Node.js sin tener que instalarlos localmente o globalmente.
+
+create-react-app : Es un paquete de Node.js que crea un proyecto de React con una configuración predeterminada. Es una herramienta de línea de comandos que se puede usar para crear proyectos de React.
+
+
+npm install|i [tipo de instalacion] <nombre del paquete>[@version del paquete]
+
+npm i --save|-S create-react-app
+npm i --save-dev|-D create-react-app
+npm i -g create-react-app
+
+
+1) Instalar Node (se descarga de internet y se instala como cualquier programa)
+2) Abrir una consola de comandos (cmd|git bash|powershell|terminal|etc...)
+3) Instalar create-react-app (npm i -g create-react-app)
+
+
+
+
+JSX : Es la sintaxis que usa react para crear elementos
+
+
+WEBPACK : EMPAQUETADOR DE MODULOS (bundler / src/index.js )
+
+BABEL : "Traductor" de JavaScript en algo mas compatible con los navegadores (Transpiler)
+
+
+react-dom : Es la librería que se encarga de renderizar los elementos de React en el DOM (Document Object Model)
+
+DOM : Es la representación de un documento HTML como un árbol de objetos. Es una interfaz de programación de aplicaciones (API) para documentos HTML y XML. 
+
+
+VIRTUAL DOM : Es una representación del DOM en memoria. Es una capa de abstracción que permite a los frameworks y librerías manipular el DOM de forma más eficiente y renderizar solo los cambios necesarios cuando los datos cambian.
+
+
+render / renderizar : dibujar en pantalla / mostrar en pantalla / mostrar en el DOM
+
+
+COMPONENTE DE REACT : Es una funcion que tienen que retornar algo obligatoriamente y su nombre arranca en mayuscula
+
+
+
+function Foo(){
+    return "Hola Mundo"
+}
+
+Foo()   <Foo/>
+
+
+
+function Foo(){
+    return <h1>Hola Mundo</h1>
+    }
+
+
+
+function Foo(){
+    return <h1>Hola Mundo</h1><h1>Hola Mundo</h1> //esta mal
+}
+
+
+function Foo(){
+    return <div><h1>Hola Mundo</h1><h1>Hola Mundo</h1></div>
+}
+
+
+function Foo(){
+    return <><h1>Hola Mundo</h1><h1>Hola Mundo</h1></> 
+}
+
+
+
+REACT-BOOTSTRAP
+https://react-bootstrap.github.io/
+
+REACTSTRAP
+https://reactstrap.github.io/
+
+BEM
+http://getbem.com/introduction/
+
+MATERIAL UI
+https://material-ui.com/
+
+ANT DESIGN
+https://ant.design/
+
+CHAKRA UI
+https://chakra-ui.com/
+
+TAILWIND CSS
+https://tailwindcss.com/
+
+STYLED COMPONENTS
+https://styled-components.com/
+
+const config {
+    selector : "h1",
+    text : "Hola Mundo",
+    className : "foo",
+    change : true
+}
+
+
+function foo(params){
+    if(params.change){
+        linea 1
+        linea 2
+    }else{
+        linea 1
+        linea 2
+        linea 3
+    }
+}
+
+
+foo(config)
+foo(config2)
+foo(config3)
+
+
+
+GIT : Es el programa que usamos para : 
+
+    - Controlador de versiones (commits)
+    - Desarrollo colaborativo (github)
+
+GITHUB - GITLAB - BITBUCKET : CLientes/Hosts de GIT
+
+GITHUB FOR WINDOWS : Cliente de GIT para Windows (https://desktop.github.com/)
+
+
+
+
+
+
+MOUNT
+UPDATE
+UNMOUNT
+
+
+class Clock {
+    
+
+    let conexionViva = undefined //
+    let intervalo = undefined//
+
+    constructor(){
+        this.state = {
+            contador : 0,
+            nombre : "Juan"
+        }
+    }
+
+    handleScroll(){
+
+    }
+
+    componentDidMount(){
+        console.log("test")
+        pedidos a Api
+        conexiones con servidores
+
+        setTimeout(()=>{},1000)
+
+        invervalo = setInterval(()=>{
+            console.log("test")
+        },1000)
+
+        const socket = new WebSocket("ws://localhost:8080")
+        conexionViva = socket
+
+        subscripciones a eventos
+
+        document.addEventListener("scroll",this.handleScroll)
+    }
+
+    componentDidUpdate(){
+        console.log("test")
+    }
+
+    componentWillUnmount(){
+        document.removeEventListener("srcoll",this.handleScroll)
+        conexionViva.close()
+        clearInterval(intervalo)
+    }
+
+    shouldComponentUpdate(){
+
+    }
+
+    render(){
+
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+HOOKS : 
+
+    - useState
+    - useEffect
+    - useContext
+    - useReducer
+    - useCallback
+    - useMemo
+    - useRef
+    - useImperativeHandle
+    - useLayoutEffect
+    - useDebugValue
+
+- Son siempre funciones 
+- No se pueden usar en clases
+- No se puede usar fuera del componente
+- No se pueden usar en ciclos
+- No se pueden usar en condiciones
+- Siempre comienzan con "use"
+- Si esta importado , se usa ahi
+
+useState : siempre da un array con dos elementos, el primero es el estado (inicial) y el segundo es una funcion que actualiza el estado , el estado no se puede modificar si no se usa la funcion.
+
+
+
+
+
+
+CONTAINER PATTERN : Es un patron de diseño que consiste en tener como minimo dos componentes : 
+
+    - Container : Este componente se encarga de manejar el estado y las funciones que se le pasan al componente presentacional , consigue la informacion y pasa todo a traves de props al componente presentacional.
+
+    - Presentational : Este componente se encarga de mostrar la informacion que recibe a traves de props, puede tener logica pero muy chica, solo para mostrar la informacion que recibe.
+
+
+DESTRUCTURING : Es una forma de extraer valores de un objeto o array y asignarlos a variables.
+
+
+
+const arr = [1,2,3]
+
+const [uno,dos,tres] = arr
+
+const uno = arr[0]
+const dos = arr[1]
+const tres = arr[2]
+
+
+
+
+const obj = {x:1,y:2,z:3}
+const {x:x,y:y,z:z} = obj
+const {x,y,z} = obj
+
+const x = obj.x
+const y = obj.y
+const z = obj.z
+
+
+
+
+OBJECT PROPERTY SHORTHAND : Es una forma de escribir propiedades de objetos de forma mas corta.
+
+const nombre = "horacio"
+
+const persona = {
+    nombre : nombre
+}
+
+
+const persona = { nombre }
+
+
+Pancho [con lluvia de papas] + {bebida}
+
+
+
+npm i [-g|-S|-D] {expression}
+
+
+expression : 
+
+
+
+/src
+    /components
+        /layout
+            Header.js
+            Footer.js
+            Main.js
+            App.js
+        /pages
+            Home.js
+            About.js
+            Contact.js
+        /shared
+            Counter.js
+
+
+
+
+FIltrar por categorias
+
+
+
+RENDER CONDICINAL
+
+
+    //BEM : Block Element Modifier
+    //<element class="bloque">
+    //...
+    //<p class="bloque__elemento bloque__elemento--modificador">
+
+   /*  return (
+        <p className={`parrafo ${carganding? "parrafo--show" : "parrafo--hide"}`} >{carganding ? "Cargando..." : "un texto random"}</p>
+    )
+ */
+    /* return (
+        <p className={carganding ? "show" : "hide"} >{carganding ? "Cargando..." : "un texto random"}</p>
+    ) */
+
+
+    /* return (
+        <>
+            {carganding && <p>Cargando...</p>}
+        </>
+    ) */
+
+
+
+    /* return (
+        <>
+            {carganding ? <p>Cargando...</p> : null }
+        </>
+    )
+ */
+
+    /*  return (
+         <p>{carganding ? "Cargando..." : "un texto random"}</p>
+     ) */
+
+
+    /* return (
+        <>
+            {carganding ? <p>Cargando...</p> : <p>un texto random</p>}
+        </>
+    ) */
+
+
+
+    /* if (carganding) {
+        return (
+            <p>cargandig...</p>
+        )
+    } else {
+        return (
+            <p>un texto random</p>
+        )
+    } */
+
+
+
+FIREBASE : Es una plataforma con servicios que me permiten desarrollar sin preocuparme del backend
+
+proyecto-1
+    |_base de datos (firestore/realtime database)
+    |_storage
+
+    -app1 : {}
+
+proyecto-2
+    |_auth (createUser/loginUser(user,pass))
+    |_storage
+    |_hosting
+
+proyecto-3
+    |_could function
+
+
+
+
+RELACIONALES(SQL)  /  NO RELACIONALES(NoSQL-Not Only SQL)
+
+- SQL : MySQL, PostgreSQL, Oracle, SQL Server, SQLite
+- NoSQL : MongoDB, Firebase, CouchDB, DynamoDB, Cassandra, Redis
+
+
+BASE DE DATOS       /      BASE DE DATOS
+TABLAS(ENTIDADES)   /      COLECCIONES [{},{}]
+REGISTROS(FILAS)    /      DOCUMENTOS (JSON) {id:1, titulo:"CD-ROM", precio:20,img:""}
+    
+CAMPOS(COLUMNAS)    /      PROPIEDADES  

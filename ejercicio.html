@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //apis que retornan promesas
+        //const promesa = fetch()
+        //const promesa = caches.open()
+        //callback of hell
+        /* pedidoAlServer("dire.del.server", (res) => {
+            pedidoAlServer("dire.del.server", (res) => {
+                pedidoAlServer("dire.del.server", (res) => {
+
+                })
+            })
+        }) */
+        //usuarioLogueado
+
+       /*  let PrimerpedidoAlServer = new Promise((res, rej) => {
+            res() //resolve
+            //rej() //reject
+        })
+
+        PrimerpedidoAlServer
+            .then((res) => {
+                console.log("promesa resuelta")
+                const segundoPedido = new Promise((res, rej) => {
+
+                    res()
+                })
+                return segundoPedido
+            })
+            .then((res)=>{
+                console.log("segunda promesa resuelta")
+                const tercerPedido = new Promise((res, rej) => {
+
+                    res()
+                })
+                return tercerPedido
+            })
+            .then(()=>{
+
+            })
+            .catch(() => {
+                console.log("promesa rechazada")
+            })
+            .finally(() => {
+                console.log("promesa finalizada")
+            }) */
+
+            //API SOAP : XML
+            //API REST : CLIENT/REQUEST <-    API ->  SERVER/RESPONSE
+            /**
+             * 
+             * mipagina.com
+             * 
+             * ENDPOINTS
+             * 
+             * mipagina.com/api/usuarios (GET : [usuarios] | POST : crea un nuevo usuario)
+             * mipagina.com/api/posts
+             * mipagina.com/api/comments
+             * mipagina.com/api/sarasa
+             * 
+             * 
+             * /
+             * 
+             * /
+            */
+
+            /* 
+            HTTP (1.0,1.1)
+
+            REQUEST : URL - METODO (GET - POST - PUT - PATCH - DELETE - ETC) - VERSION
+                HEADERS (Authorization - Content-Type - ETC)
+                BODY
+
+            RESPONSE : VERSION - STATUS CODE - MENSAJE
+                HEADERS (Content-Type - ETC)
+                BODY
+
+            
+            1xx : INFO |
+            2xx : OK | 200 OK - 201 CREATED - 202 ACCEPTED
+            3xx : REDIRECCIONES | 301 MOVED PERMANENTLY - 302 FOUND - 304 NOT MODIFIED
+            4xx : ERRORES CLIENTE | 400 BAD REQUEST - 401 UNAUTHORIZED - 403 FORBIDDEN - 404 NOT FOUND
+            405 METHOD NOT ALLOWED - 406 NOT ACCEPTABLE - 409 CONFLICT - 418 I'M A TEAPOT
+            5xx : ERRORES SERVIDOR | 500 INTERNAL SERVER ERROR - 502 BAD GATEWAY - 503 SERVICE UNAVAILABLE
+            
+            */
+           /*  let usuario = {
+                nombre : "pepe",
+                apellido : "perez",
+                edad : 30
+            } */
+
+            //API WEB : Fetch
+          /*   const respuesta = fetch("https://jsonplaceholder.typicode.com/users",{
+                method : "POST",
+                headers : {
+                    "Content-Type" : "application/json"
+                },
+                body : JSON.stringify(usuario)
+            }) */
+
+            //FETCH -> REPONSE -> VALOR
+            const respuesta = fetch("https://jsonplaceholder.typicode.com/users")
+
+            respuesta
+                .then((resultado)=>{
+                    console.log(resultado)
+                    //resultado.blob()
+                    const usuarios = resultado.json()
+                    return usuarios
+                    //console.log(usuarios)
+                    //resultado.text()
+                    //resultado.formData()
+                    //resultado.arrayBuffer()
+                })
+                .then((resultado)=>{
+                    console.table(resultado)
+                })
+                .catch((error)=>{
+                    console.log(error)
+                })
+                .finally(()=>{
+                    console.log("finalizado")
+                })
+
+
+
+    </script>
+</body>
+
+</html>
