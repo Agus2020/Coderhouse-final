@@ -5,6 +5,8 @@ import Carrito from "./Carrito"
 import ItemListContainer from './ItemListContainer';
 import ItemDetailContainer from './ItemDetailContainer';
 import Create from './Create';
+import Show from './Show';
+import Edit from './Edit';
 
 
 const Main = () => {
@@ -16,6 +18,8 @@ const Main = () => {
 
                 <Route path='/' element={<Home/>}/>
                 <Route path='Create' element={<Create/>}/>
+                <Route path='/edit/:id' element={<Edit/>}/>
+                <Route path='Show' element={<Show/>}/>
                 <Route path="/productos" element={<ItemListContainer/>}/>
                 <Route path="/productos/:cat"  element={<ItemListContainer/>}/>
                 <Route path="/item/:id" element={<ItemDetailContainer/>}/>

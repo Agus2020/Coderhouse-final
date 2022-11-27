@@ -5,21 +5,20 @@ import { db } from "./firebase"
 
 const Carrito = () => {
 
-
     const valorDelContexto = useCarrito()
+    console.log(valorDelContexto.productos)
     const refName = useRef() 
     const refAge = useRef()
     const [id, setId] = useState("")
-
     const handleSubmit = (e) => {
         e.preventDefault()
         const orden = {
             buyer: {
-                name: "Horacio",
-                phone: "123456789",
+                name: refName.current.value,
+                phone: refAge.current.value,
             },
-            products: [],
-            total : 100,
+            products:valorDelContexto.productos[0].id,
+            total : valorDelContexto.productos[0].cantidad,
             date : serverTimestamp()
         }
 
