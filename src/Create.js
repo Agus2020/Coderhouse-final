@@ -7,13 +7,14 @@ import {db} from './firebase';
 const Create = () => {
 
   const [title,setTitle] = useState('')
+  const [price,setPrice] = useState()
   const [stock,setStock] = useState(0)
   const [image,setImage] = useState('')
   const navigate = useNavigate()
   const productsCollection = collection(db,"productos")
   const store = async (e)=>{
     e.preventDefault()
-    await addDoc(productsCollection,{title:title,stock:stock,image:image})
+    await addDoc(productsCollection,{title:title,stock:stock,image:image,price:price})
     navigate('/')
   }
   return (
@@ -36,12 +37,22 @@ const Create = () => {
               <input
               value={stock}
               onChange={(e)=>setStock(e.target.value)}
-              type="text"
+              type="number"
               className='form-control'
               />
             </div>
             <div className='mb-3'>
-              <label className='form-label'>Imagen</label>
+              <label className='form-label'>Price</label>
+              <input
+              value={price}
+              onChange={(e)=>setPrice(e.target.value)}
+              type="number"
+              className='form-control'
+              />
+            </div>
+
+            <div className='mb-3'>
+              <label className='form-label'>Category</label>
               <input
               value={image} 
               onChange={(e)=>setImage(e.target.value)}
@@ -49,6 +60,25 @@ const Create = () => {
               className='form-control'
               />
             </div>
+            <div className='radio-r'>
+              <input type="radio" name="category" value="accion" className="div-r"/>
+              <label className="label-r">Accion</label>
+              <input type="radio" name="category" value="aventura" className="div-r"/>
+              <label className="label-r">Aventura</label>
+              <input type="radio" name="category" value="zombie" className="div-r"/>
+              <label className="label-r">Zombie</label>
+              </div>
+
+            <div className='mb-3'>
+              <label className='form-label'>Imagen</label> 
+              <input
+              value={image} 
+              onChange={(e)=>setImage(e.target.value)}
+              type="text"
+              className='form-control'
+              />
+            </div>
+            
             <button type="submit" className='btn btn-primary'>Subir</button>
           </form>
         </div>
