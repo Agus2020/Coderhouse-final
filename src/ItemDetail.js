@@ -4,22 +4,19 @@ import ItemCount from "./ItemCount"
 
 const ItemDetail = ({ producto }) => {
 
-    //const {agregarProducto} = useContext(contexto)
     const { agregarProducto } = useCarrito()
     const [cantidad, setCantidad] = useState(1)
     const [confirmado, setConfirmado] = useState(false)
-
+    
 
     const handleOnAdd = (cantidad) => {
-        console.log("Se agregaron " + cantidad + " productos")
-        console.log(producto)
         setCantidad(cantidad)
         setConfirmado(true)
     }
 
     const handleClick = () => {
         agregarProducto(producto,cantidad)
-    }
+        }
 
 
     return (

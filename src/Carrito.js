@@ -10,6 +10,9 @@ const Carrito = () => {
     const refName = useRef() 
     const refAge = useRef()
     const [id, setId] = useState("")
+    const valor=0
+
+
     const handleSubmit = (e) => {
         e.preventDefault()
         const orden = {
@@ -17,8 +20,8 @@ const Carrito = () => {
                 name: refName.current.value,
                 phone: refAge.current.value,
             },
-            products:valorDelContexto.productos[0].id,
-            total : valorDelContexto.productos[0].cantidad,
+            products:valorDelContexto[0],
+            total : "prod",
             date : serverTimestamp()
         }
 
@@ -34,7 +37,11 @@ const Carrito = () => {
             })
     }
 
-
+    const vaciarCarritos = () => {
+        valorDelContexto = null
+    }
+   if(valorDelContexto.productos.length)    
+   {
     return (
         <div>
             {id ? <h1>Orden generada con exito, su id es {id}</h1> : null}
@@ -48,8 +55,19 @@ const Carrito = () => {
                 </div>
                 <button >guardar</button>
             </form>
+            <button onClick={vaciarCarritos}>Vaciar</button>
         </div>
     )
+   }
+   else
+   {
+        return(
+            <div>
+                <p>El carrito se encuentra vacio</p>
+            </div>
+        )
+   }
+    
 }
 
 export default Carrito

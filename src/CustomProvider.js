@@ -25,10 +25,8 @@ const CustomProvider = ({ children }) => {
     }
 
     const agregarProducto = (producto, cantidad) => {
-        /* console.log(producto)
-        console.log(cantidad) */
         if (isInCart.inCart) {
-            //Sumo la cantidad
+            
         } else {
             console.log("producto nuevo en el carrito!")
             setCarrito([
