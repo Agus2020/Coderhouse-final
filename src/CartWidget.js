@@ -8,7 +8,7 @@ const CartWidget = () => {
 
     return (
         <Link to="/carrito">
-            <div className="material-icons">shopping_cart</div>
+            <div>Carrito de compras</div>
             <span>{valorDelContexto.cantidadTotal}</span>
         </Link>
     )

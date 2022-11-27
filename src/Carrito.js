@@ -4,15 +4,13 @@ import { useCarrito } from "./CustomProvider"
 import { db } from "./firebase"
 
 const Carrito = () => {
-
     const valorDelContexto = useCarrito()
-    console.log(valorDelContexto.productos)
+    console.log(valorDelContexto)
     const refName = useRef() 
     const refAge = useRef()
     const [id, setId] = useState("")
     const valor=0
-
-
+    
     const handleSubmit = (e) => {
         e.preventDefault()
         const orden = {
@@ -20,8 +18,8 @@ const Carrito = () => {
                 name: refName.current.value,
                 phone: refAge.current.value,
             },
-            products:valorDelContexto[0],
-            total : "prod",
+            products:valorDelContexto.productos[0].id,
+            total : valorDelContexto.productos[0].cantidad,
             date : serverTimestamp()
         }
 
@@ -31,20 +29,17 @@ const Carrito = () => {
         consulta
             .then((docRef) => {
                 setId(docRef.id)
+                valorDelContexto.vaciarCarrito()
             })
             .then((error)=>{
                 console.log(error)
             })
     }
-
-    const vaciarCarritos = () => {
-        valorDelContexto = null
-    }
    if(valorDelContexto.productos.length)    
    {
     return (
         <div>
-            {id ? <h1>Orden generada con exito, su id es {id}</h1> : null}
+            {valorDelContexto.cantidad.total}
             <form onSubmit={handleSubmit}>
                 <div>
                     <input ref={refName} type="text" />
@@ -55,17 +50,28 @@ const Carrito = () => {
                 </div>
                 <button >guardar</button>
             </form>
-            <button onClick={vaciarCarritos}>Vaciar</button>
+            <button onClick={valorDelContexto.vaciarCarrito}>Vaciar</button>
+            {id ? <h1>Orden generada con exito, su id es {id}</h1> : null}
         </div>
     )
    }
    else
    {
-        return(
-            <div>
-                <p>El carrito se encuentra vacio</p>
-            </div>
-        )
+        if(!id)
+        {
+            return(
+                <div>
+                    <p>El carrito se encuentra vacio</p>
+                </div>
+            )
+        }
+        else
+        {
+            return(
+                <><h3>Felicidades, su codigo es {id} gracias por comprar</h3></>
+            )
+        }
+        
    }
     
 }
