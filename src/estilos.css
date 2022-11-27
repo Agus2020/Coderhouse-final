@@ -7,3 +7,30 @@
   border:1px solid #666;
 }
 
+.card-r{
+  display: flex;
+  float:left;
+  margin:5px;
+}
+
+
+.card-img-r{
+  width:18rem;
+}
+.carrito-r{
+  display: flex;
+  float:left;
+}
+
+.div-r{
+  margin-left:15px;
+}
+
+
+.label-r{
+  margin-left:20px;
+}
+.radio-r{
+  display:flex;
+  float:left;
+}
