@@ -2,7 +2,7 @@ import { collection, doc, getDoc } from "firebase/firestore"
 import { useEffect } from "react"
 import { useState } from "react"
 import { useParams } from "react-router-dom"
-import { db } from "./firebase"
+import { db } from "../firebase"
 import ItemDetail from "./ItemDetail"
 
 const ItemDetailContainer = () => {

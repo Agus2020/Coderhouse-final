@@ -1,10 +1,7 @@
 export const contexto = React.createContext();
 
 const contextoProvider = (props) => {
-    // Initial Provider State
     const state = {};
-
-    // Reducer Function
     const reducer = (state, action) => {
         
     };

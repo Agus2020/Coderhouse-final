@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react';
-import {Navigate, useNavigate,useParams} from 'react-router-dom';
+import {useNavigate,useParams} from 'react-router-dom';
 import {getDoc,updateDoc,doc} from 'firebase/firestore';
-import {db} from './firebase';
+import {db} from '../firebase';
 import { Link } from 'react-router-dom';
 
 const Edit = () => {
@@ -9,18 +9,19 @@ const Edit = () => {
   const [stock,setStock] = useState(1)
   const [images,setImages] = useState('')
   const [price,setPrice] = useState(1)
+  const [category,setCategory] = useState('')
   const navigate = useNavigate()
   const {id} = useParams()
   const update = async (e) =>{
     e.preventDefault()
     const product = doc(db,"products",id)
-    const data = {title:title, stock: stock,images:images,price:price}
+    const data = {title:title, stock: stock,images:images,price:price,category:category}
     await updateDoc(product,data)
     navigate('/')
   }
 
   const getproductById = async (id) =>{
-    const product = await getDoc(doc(db,"products",id))
+    const product = await getDoc(doc(db,"productos",id))
     if(product.exists()){
       setTitle(product.data().title)
       setStock(product.data().stock)
@@ -33,7 +34,7 @@ const Edit = () => {
   }
 
   const Submit = () =>{
-    if(stock>0&&title&&images&&price>0)
+    if(stock>0&&title&&images&&price>0&&category)
     {
        return(
          <button type="submit" className='btn btn-primary'>Subir</button> 
@@ -48,7 +49,7 @@ const Edit = () => {
     <div className='container'>
     <div className='row'>
       <div className='col'>
-      <Link to="/" className=''>
+      <Link to="/show" className=''>
                 Mostrar Productos
       </Link>
         <h1>Create Product</h1>
@@ -76,6 +77,15 @@ const Edit = () => {
             <input
             value={price} 
             onChange={(e)=>setImages(e.target.value)}
+            type="text"
+            className='form-control'
+            />
+          </div>
+          <div className='mb-3'>
+            <label className='form-label'>Category</label>
+            <input
+            value={category} 
+            onChange={(e)=>setCategory(e.target.value)}
             type="text"
             className='form-control'
             />

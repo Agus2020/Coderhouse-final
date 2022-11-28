@@ -1,7 +1,7 @@
-import Header from "./Header"
+import Header from "./Navbar/Header"
 import Main from "./Main"
 import { BrowserRouter } from "react-router-dom"
-import CustomProvider from "./CustomProvider"
+import CustomProvider from "./Carrito/CustomProvider"
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 function App() {

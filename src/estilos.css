@@ -34,3 +34,11 @@
   display:flex;
   float:left;
 }
+.imagen-label-r{
+  width:100%;
+  margin-top:10px;
+}
+
+.btn-r{
+  margin:10px;
+}

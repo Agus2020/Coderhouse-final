@@ -36,12 +36,11 @@ const ItemCount = ({handleOnAdd,init}) => {
     }
 
     return (
-        <div onClick={handleDivClick}>
+        <div  onClick={handleDivClick}>
             <div className="counter-actions">
-                <input type="text" onKeyDown={handleChange}/>
-                <button onClick={handleSumar}>+</button>
+                <button onClick={handleSumar} className="btn btn-primary">+</button>
                 <p>{count}</p>
-                <button onClick={handleRestar}>-</button>
+                <button onClick={handleRestar} className="btn btn-warning">-</button>
             </div>
             <button onClick={handleConfirmar}>confirmar</button>
         </div>

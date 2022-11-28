@@ -18,10 +18,10 @@ const CustomProvider = ({ children }) => {
     const vaciarCarrito = () => {
         setCarrito([])
         setTotal(0)
+        setCantidadTotal(0)
     }
 
     const borrarItem = (id) => {
-
     }
 
     const agregarProducto = (producto, cantidad) => {
@@ -35,36 +35,19 @@ const CustomProvider = ({ children }) => {
             ])
             setTotal(total + producto.price * cantidad)
             setCantidadTotal(cantidadTotal + cantidad)
-            //pusheo al array
-            /* const prodConCant = {
-                ...producto,
-                cantidad: cantidad
-            } */
-
-            //producto.cantidad = cantidad
-
-            //no puedo MODIFICAR LA VARIABLE carrito
-            //const nuevoEstado = undefined
-            //const copia = carrito
-            //const copia = carrito.map(prod=>prod)
-            //const copia = [...carrito]
-            //copia.push(prodConCant)
-            //setCarrito(carrito.map(prod=>prod).push(productoConCantidad))
-            //setCarrito([...carrito, prodConCant])
         }
     
     }
 
     const isInCart = (id) => {
-        //return true o false
         return { inCart: false, item: {}, index: 0 }
     }
 
 
     const valorDelContexto = {
         productos: carrito,
-        cantidad: total,//precio
-        cantidadTotal : cantidadTotal,//cant de productos
+        cantidad: total,
+        cantidadTotal : cantidadTotal,
         vaciarCarrito: vaciarCarrito,
         agregarProducto: agregarProducto
     }
