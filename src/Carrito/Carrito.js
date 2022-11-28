@@ -5,8 +5,6 @@ import { db } from "../firebase"
 
 const Carrito = () => {
     const valorDelContexto = useCarrito()
-    console.log(valorDelContexto)
-
     const refEmail = useRef() 
     const refEmailV = useRef()
     const refAge = useRef()
@@ -37,7 +35,6 @@ const Carrito = () => {
                 valorDelContexto.vaciarCarrito()
             })
             .then((error)=>{
-                console.log(error)
             })
     }
    if(valorDelContexto.productos.length)    

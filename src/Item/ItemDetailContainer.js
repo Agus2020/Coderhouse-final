@@ -20,7 +20,6 @@ const ItemDetailContainer = () => {
             setItem(res.data())
         })
         .catch(error=>{
-            console.log(error)
         })
     },[])
 

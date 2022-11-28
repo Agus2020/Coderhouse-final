@@ -28,7 +28,6 @@ const CustomProvider = ({ children }) => {
         if (isInCart.inCart) {
             
         } else {
-            console.log("producto nuevo en el carrito!")
             setCarrito([
                 ...carrito,
                 { ...producto, cantidad }

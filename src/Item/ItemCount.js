@@ -6,21 +6,17 @@ const ItemCount = ({handleOnAdd,init}) => {
 
     
     const handleSumar = (e) => {
-        console.log(e)
-        console.log(e.target)
         e.stopPropagation()
         setCount(count + 1);
     }
 
     const handleRestar = (e) => {
-        console.log(e.target)
         setCount(count - 1);
     }
 
     const handleChange = (e) => {
         const codigo = e.key.charCodeAt()
         if (codigo > 96 && codigo < 123) {
-            console.log(e.key,codigo)
         }else{
             e.preventDefault()
         }
@@ -32,7 +28,6 @@ const ItemCount = ({handleOnAdd,init}) => {
     }
 
     const handleDivClick = (e) => {
-        console.log(e.target)
     }
 
     return (

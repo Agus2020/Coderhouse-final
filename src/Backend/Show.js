@@ -89,7 +89,6 @@ useEffect (()=>{
                     {products.map((product)=>{
                       return(
                         <tr key={product.key}>
-                          {console.log(product.images)}
                           <td><img src={product.images} className="img-table"/></td>
                           <td>{product.title}</td>
                           <td>{product.stock}</td>

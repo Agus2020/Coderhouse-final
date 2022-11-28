@@ -16,14 +16,12 @@ const ItemListContainer = () => {
         if (cat) {
             const filtro = query(productosCollection, where("category", "==", cat))
             const consulta = getDocs(filtro)
-            console.log("a:"+cat);
             consulta
                 .then((resultado) => {
                     const productos = resultado.docs.map(doc => ({ ...doc.data(), id: doc.id }))
                     setItems(productos)
                 })
                 .catch((error) => {
-                    console.log(error)
                 })
 
         } else {
@@ -34,7 +32,6 @@ const ItemListContainer = () => {
                     setItems(productos)
                 })
                 .catch((error) => {
-                    console.log(error)
                 })
 
         }
