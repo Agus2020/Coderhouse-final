@@ -4,9 +4,9 @@
 ## A continuacion te cuento las Librerías que utilice para crear el proyecto
 
 
-### bootstrap: Se utilizo para la parte de la maquetacion de la app
-### firebase: Se utilizo para la base de datos de los juegos y las ordenes de la app
-### sweetalert2: Se utikizo para crear alertas, en el backend
+### "bootstrap": "^5.2.2", Se utilizo para la parte de la maquetacion de la app
+### "firebase": "^9.14.0", Se utilizo para la base de datos de los juegos y las ordenes de la app
+### "sweetalert2":"^11.6.14" y "sweetalert2-react-content": "^5.0.7", Se utilizo para crear alertas, en el backend
 
 
 
