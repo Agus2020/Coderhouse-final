@@ -1,4 +1,6 @@
 
+
+
 export let productosIniciales = []
 
 
@@ -9,6 +11,10 @@ const generatePromise = (operation,time = 2000) => {
         }, time)
     })
 }
+
+
+
+
 
 export const getProducts = () => generatePromise(productosIniciales)
 
