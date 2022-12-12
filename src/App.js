@@ -3,6 +3,7 @@ import Main from "./Main"
 import { BrowserRouter } from "react-router-dom"
 import CustomProvider from "./Carrito/CustomProvider"
 import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap';
 
 function App() {
     return (
