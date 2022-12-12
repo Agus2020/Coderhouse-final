@@ -45,3 +45,22 @@
 a{
   text-decoration:none;
 }
+
+
+.r-banner{
+  height:100%;
+}
+
+
+.r-btn{
+  display:flex;
+  float:left;
+}
+.item-r{
+  display:flex;
+  float:left;
+
+  margin:15px;
+
+}
+
