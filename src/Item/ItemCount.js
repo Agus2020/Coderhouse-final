@@ -1,17 +1,23 @@
 import { useState } from "react";
 
-const ItemCount = ({handleOnAdd,init}) => {
-
+const ItemCount = ({handleOnAdd,init,stock}) => {
     const [count, setCount] = useState(init);
-
-    
+    const [estado,setEstado] = useState(0);
+    console.log(stock)
     const handleSumar = (e) => {
         e.stopPropagation()
-        setCount(count + 1);
+        if(count<stock)
+        {
+            setCount(count + 1);
+        } 
     }
 
     const handleRestar = (e) => {
-        setCount(count - 1);
+        e.stopPropagation()
+        if(count>1)
+        {
+            setCount(count - 1);
+        }
     }
 
     const handleChange = (e) => {
@@ -25,6 +31,7 @@ const ItemCount = ({handleOnAdd,init}) => {
 
     const handleConfirmar = () => { 
         handleOnAdd(count)
+        setEstado(1)
     }
 
     const handleDivClick = (e) => {
@@ -33,13 +40,25 @@ const ItemCount = ({handleOnAdd,init}) => {
     return (
         <div  onClick={handleDivClick}>
             <div className="counter-actions">
-                <button onClick={handleSumar} className="btn btn-primary">+</button>
-                <p>{count}</p>
-                <button onClick={handleRestar} className="btn btn-warning">-</button>
+                {estado ? 
+                    null
+                : 
+
+                <div>
+                        <button onClick={handleSumar} className="btn btn-primary" disabled={estado}>+</button>
+                        <p>{count}</p>
+                        <button onClick={handleRestar} className="btn btn-warning" disabled={estado}>-</button>
+                        <button onClick={handleConfirmar} className="btn btn-primary">confirmar</button>
+                    </div>
+                
+            
+            }
+                
             </div>
-            <button onClick={handleConfirmar}>confirmar</button>
+            
         </div>
     )
+   
 
 }
 
