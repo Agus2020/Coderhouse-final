@@ -9,23 +9,28 @@ export const useCarrito = () => {
 }
 
 
-const CustomProvider = ({ children }) => {
 
+
+const CustomProvider = ({ children }) => {
+    const [estado,setEstado] = useState(0)
     const [carrito, setCarrito] = useState([])
     const [total, setTotal] = useState(0)
     const [cantidadTotal, setCantidadTotal] = useState(0)
 
-    const vaciarCarrito = () => {
-        setCarrito([])
-        setTotal(0)
-        setCantidadTotal(0)
+    const vaciarCarrito = (id) => {
+        setCarrito([id])
+        setTotal(id.cantidadTotal=0)
+        setCantidadTotal(id.cantidad=0)
     }
 
     const borrarItem = (id) => {
+        console.log(vaciarCarrito(id))
+        
     }
 
     const agregarProducto = (producto, cantidad) => {
         if (isInCart.inCart) {
+            
             
         } else {
             setCarrito([
@@ -48,7 +53,8 @@ const CustomProvider = ({ children }) => {
         cantidad: total,
         cantidadTotal : cantidadTotal,
         vaciarCarrito: vaciarCarrito,
-        agregarProducto: agregarProducto
+        agregarProducto: agregarProducto,
+        borrarItem:borrarItem,
     }
 
     return (
@@ -57,5 +63,6 @@ const CustomProvider = ({ children }) => {
         </Provider>
     )
 }
+
 
 export default CustomProvider
