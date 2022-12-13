@@ -17,29 +17,33 @@ const CustomProvider = ({ children }) => {
     const [total, setTotal] = useState(0)
     const [cantidadTotal, setCantidadTotal] = useState(0)
 
-    const vaciarCarrito = (id) => {
-        setCarrito([id])
-        setTotal(id.cantidadTotal=0)
-        setCantidadTotal(id.cantidad=0)
+    const vaciarCarrito = () => {
+        setCarrito([])
+        setTotal(0)
+        setCantidadTotal(0)
     }
 
-    const borrarItem = (id) => {
-        console.log(vaciarCarrito(id))
+    const borrarItem = (producto,cantidad,cantidadTotal) => {
+        
         
     }
 
     const agregarProducto = (producto, cantidad) => {
-        if (isInCart.inCart) {
-            
-            
-        } else {
-            setCarrito([
-                ...carrito,
-                { ...producto, cantidad }
-            ])
-            setTotal(total + producto.price * cantidad)
-            setCantidadTotal(cantidadTotal + cantidad)
+        const inCart = carrito.find(prod => prod.id === producto.id)
+        if (inCart){
+            setCarrito(carrito.map((element) => {
+                if(element.id === inCart.id) {
+                    return {...inCart, cantidad: inCart.cantidad + cantidad}
+                }
+                else return element
+            }))
         }
+        else{
+            setCarrito([...carrito, {...producto,cantidad}])
+
+        } 
+        setTotal(total + producto.price * cantidad)
+        setCantidadTotal(cantidadTotal + cantidad)
     
     }
 
