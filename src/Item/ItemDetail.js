@@ -2,6 +2,8 @@ import {useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useCarrito } from "../Carrito/CustomProvider"
 import ItemCount from "./ItemCount"
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 
 const ItemDetail = ({ producto }) => {
 
@@ -19,20 +21,32 @@ const ItemDetail = ({ producto }) => {
 
     const handleClick = () => {
         agregarProducto(producto,cantidad)
-        alert("Productos agregados al carrito")
+        const MySwal = withReactContent(Swal)
+        MySwal.fire({
+            title: <strong>Productos agregados!</strong>,
+            icon: 'success'
+          })
         navigate("/")
         }
 
 
     return (
-        <div className="card card-r" >
-            <h2>${producto.price}</h2>
+        <div className="card card-rDetail" >
+            
             <img src={producto.images} alt={producto.title} className="card-img-top card-img-r" />
-            <div className="card-body">
+            <div className="card-body card-b">
                 <h5 className="card-title">{producto.title}</h5>
-                <h5 className="card-description">Cantidad disponible:{producto.stock}</h5>
-                <ItemCount init={cantidad} handleOnAdd={handleOnAdd}  stock={producto.stock}/>
-                    {confirmado && <button onClick={handleClick} >agregar al carrito</button>}
+                <h2>US${producto.price}</h2>
+                <h5 className="card-description description-detail">
+                {producto.description}</h5>
+                <h5 className="card-description">
+                Cantidad disponible:{producto.stock}</h5>
+                <div >
+                <ItemCount 
+                init={cantidad} handleOnAdd={handleOnAdd}  stock={producto.stock}/>
+                {confirmado && <button onClick={handleClick} className="btn btn-primary">Confirmar el carrito de  {cantidad} productos</button>}
+                </div>
+                
             </div>
             
            
