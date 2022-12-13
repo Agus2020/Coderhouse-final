@@ -10,9 +10,23 @@
 .card-r{
   display: flex;
   float:left;
+  align-items:center;
+  margin:5px;
+  width:24rem;
+}
+.card-rDetail{
+  display: flex;
+  align-items: center;
+  margin:5px;
+  width:24rem;
+}
+.button{
+  display:flex;
+  justify-content: center;
+}
+.button button{
   margin:5px;
 }
-
 
 .card-img-r{
   width:18rem;
