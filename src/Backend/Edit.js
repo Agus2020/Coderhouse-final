@@ -3,6 +3,7 @@ import {useNavigate,useParams} from 'react-router-dom';
 import {getDoc,updateDoc,doc} from 'firebase/firestore';
 import {db} from '../firebase';
 import { Link } from 'react-router-dom';
+import Select from "react-select";
 
 const Edit = () => {
   const [title,setTitle] = useState('')
@@ -14,11 +15,26 @@ const Edit = () => {
   const {id} = useParams()
   const update = async (e) =>{
     e.preventDefault()
-    const product = doc(db,"products",id)
+    const product = doc(db,"productos",id)
     const data = {title:title, stock: stock,images:images,price:price,category:category}
     await updateDoc(product,data)
     navigate('/')
   }
+
+
+  const options =[
+    {value: 'accion',label:'Accion'},
+    {value: 'aventura',label:'Aventura'},
+    {value:'zombie',label:'Zombies'}
+  ]
+
+  const onDrownChange = ({value}) =>{
+    setCategory(value)
+    console.log(value)
+  }
+
+
+
 
   const getproductById = async (id) =>{
     const product = await getDoc(doc(db,"productos",id))
@@ -76,19 +92,13 @@ const Edit = () => {
             <label className='form-label'>Precio</label>
             <input
             value={price} 
-            onChange={(e)=>setImages(e.target.value)}
+            onChange={(e)=>setPrice(e.target.value)}
             type="text"
             className='form-control'
             />
           </div>
           <div className='mb-3'>
-            <label className='form-label'>Category</label>
-            <input
-            value={category} 
-            onChange={(e)=>setCategory(e.target.value)}
-            type="text"
-            className='form-control'
-            />
+          <Select options={options} onChange={onDrownChange}/>
           </div>
           <div className='mb-3'>
             <label className='form-label'>Imagen</label>

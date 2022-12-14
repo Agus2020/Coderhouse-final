@@ -78,19 +78,23 @@ useEffect (()=>{
                   <thead>
                     <tr>
                       <th>images</th>
-                      <th>Nombre</th>
+                      <th>Title</th>
+                      <th>Description</th>
+                      <th>Category</th>
                       <th>Stock</th>
                       <th>Price</th>
-                      <th>Acciones</th>
-                      <th>Acciones</th>
+                      <th>//</th>
+                      <th>//</th>
                     </tr>
                   </thead>
                   <tbody>
                     {products.map((product)=>{
                       return(
-                        <tr key={product.key}>
+                        <tr key={product.id}>
                           <td><img src={product.images} className="img-table"/></td>
                           <td>{product.title}</td>
+                          <td>{product.description}</td>
+                          <td>{product.category}</td>
                           <td>{product.stock}</td>
                           <td>{product.price}</td>
                           <td>
