@@ -74,14 +74,17 @@ const Carrito = () => {
                 {     
                     valorDelContexto.productos.map((item)=>{
                         return(
-                            <div>
+                            <div key={item.id}>
                                 {
                                         item.cantidad ? 
                                         <div>
                                             <Item title={item.title} images={item.images} price={item.price} id={item.id} stock={item.cantidad}/>
-                                        <div>
+                                      {
+                                        /*<div>
                                             <button onClick={() => valorDelContexto.borrarItem(item)} className="btn btn-danger btn-borrar">Borrar</button>
-                                        </div>
+                                        </div>*/
+                                      }
+
                                     </div>
                                     :
                                     null
