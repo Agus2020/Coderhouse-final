@@ -52,7 +52,7 @@ const Carrito = () => {
                     icon: 'error',
                     title: 'Oops...',
                     text: 'Los correos electronicos no coinciden',
-                  })
+                  }) 
             }
             
     }
