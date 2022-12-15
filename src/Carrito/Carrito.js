@@ -3,7 +3,10 @@ import { useRef, useState } from "react"
 import { useCarrito,mostrarProductos } from "./CustomProvider"
 import { db } from "../firebase"
 import Item from '../Item/Item'
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 
+const MySwal = withReactContent(Swal);
 const Carrito = () => {
     const valorDelContexto = useCarrito()
     const refEmail = useRef() 
@@ -11,31 +14,47 @@ const Carrito = () => {
     const refAge = useRef()
     const [id, setId] = useState("")
 
-    
 
+   
 
     const handleSubmit = (e) => {
             e.preventDefault()
-            const orden = {
-                buyer: {
-                    name: refEmail.current.value,
-                    phone: refAge.current.value,
-                },
-                products:valorDelContexto.productos[0].id,
-                total : valorDelContexto.productos[0].cantidad,
-                date : serverTimestamp()
+            if(refEmail.current.value === refEmailV.current.value)
+            {
+                const orden = {
+                    buyer: {
+                        name: refEmail.current.value,
+                        phone: refAge.current.value,
+                    },
+                    products:[...valorDelContexto.productos],
+                    date : serverTimestamp()
+                }
+        
+                const ordersCollection = collection(db, "orders")
+                const consulta = addDoc(ordersCollection,orden)
+        
+                consulta
+                    .then((docRef) => {
+                        setId(docRef.id)
+                        valorDelContexto.vaciarCarrito()
+                    })
+                    .then((error)=>{
+                        MySwal.fire({
+                            title: <strong>Gracias por su compra!</strong>,
+                            html: <i>A continuacion, anote su codigo de verificacion</i>,
+                            icon: 'success'
+                          })
+                    })
             }
-    
-            const ordersCollection = collection(db, "orders")
-            const consulta = addDoc(ordersCollection,orden)
-    
-            consulta
-                .then((docRef) => {
-                    setId(docRef.id)
-                    valorDelContexto.vaciarCarrito()
-                })
-                .then((error)=>{
-                })
+            else
+            {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Los correos electronicos no coinciden',
+                  })
+            }
+            
     }
 
 
