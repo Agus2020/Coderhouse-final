@@ -30,7 +30,6 @@ const Edit = () => {
 
   const onDrownChange = ({value}) =>{
     setCategory(value)
-    console.log(value)
   }
 
 

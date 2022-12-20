@@ -3,7 +3,6 @@ import { useState } from "react";
 const ItemCount = ({handleOnAdd,init,stock}) => {
     const [count, setCount] = useState(init);
     const [estado,setEstado] = useState(0);
-    console.log(stock)
     const handleSumar = (e) => {
         e.stopPropagation()
         if(count<stock)

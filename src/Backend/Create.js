@@ -28,7 +28,6 @@ const Create = () => {
 
   const onDrownChange = ({value}) =>{
     setCategory(value)
-    console.log(value)
   }
 
 

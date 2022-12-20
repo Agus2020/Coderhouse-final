@@ -62,7 +62,6 @@ const Carrito = () => {
    {
     return (
         <div>
-            {console.log(valorDelContexto)}
             <form onSubmit={handleSubmit}>
             <div className="mb-3">
             <label htmlFor="exampleInputEmail1" className="form-label">Email</label>
