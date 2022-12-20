@@ -13,7 +13,7 @@ const Carrito = () => {
     const refEmailV = useRef()
     const refAge = useRef()
     const [id, setId] = useState("")
-
+    let precioTotal;
 
    
 
@@ -92,24 +92,27 @@ const Carrito = () => {
                 {     
                     valorDelContexto.productos.map((item)=>{
                         return(
-                            <div key={item.id}>
-                                {
-                                        item.cantidad ? 
-                                        <div>
-                                            <Item title={item.title} images={item.images} price={item.price} id={item.id} stock={item.cantidad}/>
-                                      {
-                                        /*<div>
-                                            <button onClick={() => valorDelContexto.borrarItem(item)} className="btn btn-danger btn-borrar">Borrar</button>
-                                        </div>*/
-                                      }
+                            <div>
+                                <div key={item.id}>
+                                    {
+                                            item.cantidad ? 
+                                            <div>
+                                                <Item title={item.title} images={item.images} price={item.price * item.cantidad} id={item.id} stock={item.cantidad}/>
+                                                {precioTotal = precioTotal+ (item.precio * item.cantidad)}
+                                        {
+                                            /*<div>
+                                                <button onClick={() => valorDelContexto.borrarItem(item)} className="btn btn-danger btn-borrar">Borrar</button>
+                                            </div>*/
+                                        }
 
-                                    </div>
-                                    :
-                                    null
-                                }
-                                
+                                        </div>
+                                        :
+                                        null
+                                    }
+                                    
+                                </div>
+                                    {precioTotal}
                             </div>
-                                
                         )
                     })
                 }

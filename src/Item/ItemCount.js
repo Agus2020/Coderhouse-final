@@ -44,9 +44,9 @@ const ItemCount = ({handleOnAdd,init,stock}) => {
                 : 
 
                 <div className="button">
-                        <button onClick={handleRestar} className="btn btn-warning" disabled={estado}>-</button>
+                        <button onClick={handleRestar} className="btn btn-light" disabled={estado}>-</button>
                         <p>{count}</p>
-                        <button onClick={handleSumar} className="btn btn-primary" disabled={estado}>+</button>
+                        <button onClick={handleSumar} className="btn btn-light" disabled={estado}>+</button>
                         
                         <button onClick={handleConfirmar} className="btn btn-primary">confirmar</button>
                 </div>
