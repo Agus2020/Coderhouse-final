@@ -62,7 +62,9 @@ const Carrito = () => {
    {
     return (
         <div>
-            <form onSubmit={handleSubmit}>
+
+
+            <form onSubmit={handleSubmit} className="carrito-form">
             <div className="mb-3">
             <label htmlFor="exampleInputEmail1" className="form-label">Email</label>
                 <input required ref={refEmail} type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
@@ -81,11 +83,11 @@ const Carrito = () => {
                     <button className="btn btn-primary btn-r">Finalizar compra</button>
                 </div>
                 
-                
-            </form>
-            <div className="r-btn">
+                <div className="r-btn">
                 <button onClick={valorDelContexto.vaciarCarrito} className="btn btn-warning btn-r">Vaciar Carrito</button>
             </div>
+            </form>
+
            
             {id ? <h1>Orden generada con exito, su id es {id}</h1> : null}
             <div className="item-r">
@@ -98,7 +100,7 @@ const Carrito = () => {
                                             item.cantidad ? 
                                             <div>
                                                 <Item title={item.title} images={item.images} price={item.price * item.cantidad} id={item.id} stock={item.cantidad}/>
-                                                {precioTotal = precioTotal+ (item.precio * item.cantidad)}
+
                                         {
                                             /*<div>
                                                 <button onClick={() => valorDelContexto.borrarItem(item)} className="btn btn-danger btn-borrar">Borrar</button>
@@ -111,7 +113,7 @@ const Carrito = () => {
                                     }
                                     
                                 </div>
-                                    {precioTotal}
+                                    
                             </div>
                         )
                     })

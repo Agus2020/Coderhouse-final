@@ -4,7 +4,6 @@ import Home from './Home';
 import Carrito from "./Carrito/Carrito"
 import ItemListContainer from './Item/ItemListContainer';
 import ItemDetailContainer from './Item/ItemDetailContainer';
-import Create from './Backend/Create';
 import Show from './Backend/Show';
 import Edit from './Backend/Edit';
 
@@ -16,7 +15,6 @@ const Main = () => {
         <main>
             <Routes>
                 <Route path='/' element={<Home/>}/>
-                <Route path='Create' element={<Create/>}/>
                 <Route path='/edit/:id' element={<Edit/>}/>
                 <Route path='Show' element={<Show/>}/>
                 <Route path="/productos" element={<ItemListContainer/>}/>
