@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { db } from "../firebase"
 import ItemList from "./ItemList"
-
+import './estilos.css';
 const ItemListContainer = () => {
     
     const [items, setItems] = useState([])
@@ -40,8 +40,7 @@ const ItemListContainer = () => {
 
     return (
         <div>
-            <h2>Productos</h2>
-            {items.length == 0 ? <h1>Cargando...</h1> : <ItemList items={items} />}
+            {items.length === 0 ? <h1>Cargando...</h1> : <ItemList items={items} />}
         </div>
     )
 

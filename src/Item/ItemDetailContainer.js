@@ -4,7 +4,7 @@ import { useState } from "react"
 import { useParams } from "react-router-dom"
 import { db } from "../firebase"
 import ItemDetail from "./ItemDetail"
-
+import './estilos.css';
 const ItemDetailContainer = () => {
 
     const [item, setItem] = useState({})
@@ -24,7 +24,10 @@ const ItemDetailContainer = () => {
     },[])
 
     return (
-        <ItemDetail producto={{id,...item}}/>
+        <div className="card card-rDetail" >
+            <ItemDetail producto={{id,...item}}/>
+        </div>
+        
     )
 }
 

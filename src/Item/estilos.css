@@ -1,0 +1,36 @@
+body{
+  background:rgb(245, 245, 245);
+}
+
+
+/*  Item,ItemList,itemListContainer */
+.card-r{
+  padding:30px;
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+  gap:100px;
+  align-items: flex-start;
+
+}
+.item{
+  text-align: center;
+  border:solid 1px gray;
+  
+}
+.item:hover{
+  transition-delay: 0.2s;
+  box-shadow:0px 3px 5px rgba(15,15,15,.5);
+}
+.item img{
+  height:500px;
+  width: 100%; 
+}
+@media only screen and (max-width: 957px) {
+  .card-r{
+    justify-content: center;
+  }
+ }
+
+ /*ItemDetail, ItemDetailContainer*/
+
