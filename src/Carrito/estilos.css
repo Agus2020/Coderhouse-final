@@ -1,0 +1,8 @@
+.item-r{
+    padding:30px;
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    gap:100px;
+    align-items: flex-start;
+}

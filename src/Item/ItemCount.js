@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import './estilos.css'
 const ItemCount = ({handleOnAdd,init,stock}) => {
     const [count, setCount] = useState(init);
     const [estado,setEstado] = useState(0);
@@ -44,8 +44,9 @@ const ItemCount = ({handleOnAdd,init,stock}) => {
                 : 
 
                 <div className="button">
+                    <p>{count}</p>
                         <button onClick={handleRestar} className="btn btn-light" disabled={estado}>-</button>
-                        <p>{count}</p>
+                        
                         <button onClick={handleSumar} className="btn btn-light" disabled={estado}>+</button>
                         
                         <button onClick={handleConfirmar} className="btn btn-primary">confirmar</button>

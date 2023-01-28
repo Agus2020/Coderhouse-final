@@ -4,14 +4,13 @@ body{
 
 
 /*  Item,ItemList,itemListContainer */
-.card-r{
+.card-itemList{
   padding:30px;
   display:flex;
   flex-direction:row;
   flex-wrap:wrap;
   gap:100px;
   align-items: flex-start;
-
 }
 .item{
   text-align: center;
@@ -23,7 +22,7 @@ body{
   box-shadow:0px 3px 5px rgba(15,15,15,.5);
 }
 .item img{
-  height:500px;
+  height:350px;
   width: 100%; 
 }
 @media only screen and (max-width: 957px) {
@@ -34,3 +33,38 @@ body{
 
  /*ItemDetail, ItemDetailContainer*/
 
+.itemDetail{
+  display:flex;
+  gap:150px;
+  width:80%;
+  margin:150px;
+}
+.itemDetailT{
+  box-shadow:0px 3px 5px rgba(15,15,15,.5);
+}
+.itemDetail img{
+  height:500px;
+  width:100%;
+}
+.button p{
+  text-align: center;
+  width:auto;
+}
+.button button{
+  margin:10px;
+}
+
+@media only screen and (max-width:1145px){
+  .itemDetail{
+    flex-direction: column;
+    width:70%;
+    gap:0px;
+  }
+}
+
+@media only screen and (max-width:769px){
+  .itemDetail{
+    width:100%;
+    margin:0px;
+  }
+}

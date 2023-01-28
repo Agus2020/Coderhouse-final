@@ -24,9 +24,7 @@ const ItemDetailContainer = () => {
     },[])
 
     return (
-        <div className="card card-rDetail" >
             <ItemDetail producto={{id,...item}}/>
-        </div>
         
     )
 }

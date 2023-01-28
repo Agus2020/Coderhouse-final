@@ -5,7 +5,7 @@ import { db } from "../firebase"
 import Item from '../Item/Item'
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-
+import './estilos.css';
 const MySwal = withReactContent(Swal);
 const Carrito = () => {
     const valorDelContexto = useCarrito()
@@ -62,8 +62,6 @@ const Carrito = () => {
    {
     return (
         <div>
-
-
             <form onSubmit={handleSubmit} className="carrito-form">
             <div className="mb-3">
             <label htmlFor="exampleInputEmail1" className="form-label">Email</label>
@@ -94,7 +92,7 @@ const Carrito = () => {
                 {     
                     valorDelContexto.productos.map((item)=>{
                         return(
-                            <div>
+                            <div className="carrito">
                                 <div key={item.id}>
                                     {
                                             item.cantidad ? 
@@ -106,7 +104,8 @@ const Carrito = () => {
                                                 <button onClick={() => valorDelContexto.borrarItem(item)} className="btn btn-danger btn-borrar">Borrar</button>
                                             </div>*/
                                         }
-
+                                            <button className="btn btn-success">Agregar</button>
+                                            <button className="btn btn-danger btn-red">Borrar</button>
                                         </div>
                                         :
                                         null
