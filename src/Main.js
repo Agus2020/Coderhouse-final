@@ -6,7 +6,7 @@ import ItemListContainer from './Item/ItemListContainer';
 import ItemDetailContainer from './Item/ItemDetailContainer';
 import Show from './Backend/Show';
 import Edit from './Backend/Edit';
-
+import Error404 from './Error';
 
 const Main = () => {
 
@@ -21,7 +21,7 @@ const Main = () => {
                 <Route path="/productos/:cat"  element={<ItemListContainer/>}/>
                 <Route path="/item/:id" element={<ItemDetailContainer/>}/>
                 <Route path='/carrito' element={<Carrito/>}/>
-                <Route path='*' element={<h1>404</h1>}/>
+                <Route path='*' element={<Error404/>}/>
 
             </Routes>
         </main>
