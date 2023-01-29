@@ -1,6 +1,6 @@
 import { addDoc, collection, serverTimestamp  } from "firebase/firestore"
 import { useRef, useState } from "react"
-import { useCarrito,mostrarProductos } from "./CustomProvider"
+import { useCarrito } from "./CustomProvider"
 import { db } from "../firebase"
 import Item from '../Item/Item'
 import Swal from 'sweetalert2';
@@ -13,10 +13,6 @@ const Carrito = () => {
     const refEmailV = useRef()
     const refAge = useRef()
     const [id, setId] = useState("")
-    let precioTotal;
-
-   
-
     const handleSubmit = (e) => {
             e.preventDefault()
             if(refEmail.current.value === refEmailV.current.value)
@@ -61,8 +57,9 @@ const Carrito = () => {
    if(valorDelContexto.productos.length)    
    {
     return (
-        <div>
+        <div>       
                 {id ? <h1>Orden generada con exito, su id es {id}</h1> : null}
+                <button onClick={valorDelContexto.vaciarCarrito} className="btn btn-warning btn-r">Vaciar Carrito</button>
                 <div className="item-r">
                     {     
                         valorDelContexto.productos.map((item)=>{
@@ -92,8 +89,9 @@ const Carrito = () => {
                             )
                         })
                     }
+                    
                 </div>
-
+                
                 <div className="register">
                 <form onSubmit={handleSubmit} className="carrito-form">
                 <div className="mb-3">
@@ -111,7 +109,6 @@ const Carrito = () => {
                     <input required ref={refAge} type="number" className="form-control" id="exampleInputPassword1"/>
                 </div>
                     <button className="btn btn-primary btn-r">Finalizar compra</button>
-                    <button onClick={valorDelContexto.vaciarCarrito} className="btn btn-warning btn-r">Vaciar Carrito</button>
                 </form>
             </div>
 
