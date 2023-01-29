@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom"
 import CartWidget from "../Carrito/CartWidget"
 import { productosIniciales } from "../utils"
 import './estilos.css';
+
 const Nav = ({ isHeader }) => {
 
     const categorias = productosIniciales.map((item) => {
@@ -44,6 +45,7 @@ const Nav = ({ isHeader }) => {
       </ul>
     </div>
   </div>
+
   <CartWidget/>
 </nav>
 
