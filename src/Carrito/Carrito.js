@@ -62,65 +62,61 @@ const Carrito = () => {
    {
     return (
         <div>
-            <form onSubmit={handleSubmit} className="carrito-form">
-            <div className="mb-3">
-            <label htmlFor="exampleInputEmail1" className="form-label">Email</label>
-                <input required ref={refEmail} type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
-                <div id="emailHelp" className="form-text"></div>
-            </div>
-            <div className="mb-3">
-                <label htmlFor="exampleInputEmail1" className="form-label">Confirm Email</label>
-                <input required ref={refEmailV} type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
-                <div id="emailHelp" className="form-text"></div>
-            </div>
-            <div className="mb-3">
-                <label className="form-label">Telefono</label>
-                <input required ref={refAge} type="number" className="form-control" id="exampleInputPassword1"/>
-            </div>
-                <div className="r-btn">
-                    <button className="btn btn-primary btn-r">Finalizar compra</button>
-                </div>
-                
-                <div className="r-btn">
-                <button onClick={valorDelContexto.vaciarCarrito} className="btn btn-warning btn-r">Vaciar Carrito</button>
-            </div>
-            </form>
-
-           
-            {id ? <h1>Orden generada con exito, su id es {id}</h1> : null}
-            <div className="item-r">
-                {     
-                    valorDelContexto.productos.map((item)=>{
-                        return(
-                            <div className="carrito">
-                                <div key={item.id}>
-                                    {
-                                            item.cantidad ? 
-                                            <div>
-                                                <Item title={item.title} images={item.images} price={item.price * item.cantidad} id={item.id} stock={item.cantidad}/>
-
+                {id ? <h1>Orden generada con exito, su id es {id}</h1> : null}
+                <div className="item-r">
+                    {     
+                        valorDelContexto.productos.map((item)=>{
+                            return(
+                                <div className="carrito">
+                                    <div key={item.id}>
                                         {
-                                            /*<div>
-                                                <button onClick={() => valorDelContexto.borrarItem(item)} className="btn btn-danger btn-borrar">Borrar</button>
-                                            </div>*/
-                                        }
-                                            <button className="btn btn-success">Agregar</button>
-                                            <button className="btn btn-danger btn-red">Borrar</button>
-                                        </div>
-                                        :
-                                        null
-                                    }
-                                    
-                                </div>
-                                    
-                            </div>
-                        )
-                    })
-                }
-            </div>
+                                                item.cantidad ? 
+                                                <div>
+                                                    <Item title={item.title} images={item.images} price={item.price * item.cantidad} id={item.id} stock={item.cantidad}/>
 
+                                            {
+                                                /*<div>
+                                                    <button onClick={() => valorDelContexto.borrarItem(item)} className="btn btn-danger btn-borrar">Borrar</button>
+                                                </div>*/
+                                            }
+                                                <button className="btn btn-success" onClick={valorDelContexto.agregarProducto}>Agregar</button>
+                                                <button className="btn btn-danger btn-red" onClick={valorDelContexto.borrarItem}>Borrar</button>
+                                            </div>
+                                            :
+                                            null
+                                        }
+                                        
+                                    </div>
+                                        
+                                </div>
+                            )
+                        })
+                    }
+                </div>
+
+                <div className="register">
+                <form onSubmit={handleSubmit} className="carrito-form">
+                <div className="mb-3">
+                <label htmlFor="exampleInputEmail1" className="form-label">Email</label>
+                    <input required ref={refEmail} type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
+                    <div id="emailHelp" className="form-text"></div>
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="exampleInputEmail1" className="form-label">Confirm Email</label>
+                    <input required ref={refEmailV} type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
+                    <div id="emailHelp" className="form-text"></div>
+                </div>
+                <div className="mb-3">
+                    <label className="form-label">Telefono</label>
+                    <input required ref={refAge} type="number" className="form-control" id="exampleInputPassword1"/>
+                </div>
+                    <button className="btn btn-primary btn-r">Finalizar compra</button>
+                    <button onClick={valorDelContexto.vaciarCarrito} className="btn btn-warning btn-r">Vaciar Carrito</button>
+                </form>
+            </div>
 
         </div>
+
     )
    }
    else
