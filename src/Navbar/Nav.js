@@ -2,7 +2,7 @@ import React from "react"
 import { NavLink } from "react-router-dom"
 import CartWidget from "../Carrito/CartWidget"
 import { productosIniciales } from "../utils"
-
+import './estilos.css';
 const Nav = ({ isHeader }) => {
 
     const categorias = productosIniciales.map((item) => {
@@ -16,35 +16,42 @@ const Nav = ({ isHeader }) => {
     return (
 
 
+
+
 <nav className="navbar navbar-expand-lg bg-light">
+
   <div className="container-fluid">
-            {!isHeader && categorias }
-            <NavLink className="navbar-brand" to="/">Home</NavLink>
-    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-        <li className="nav-item">      
-        <NavLink className="nav-link active" to="/productos">productos</NavLink>
+    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span className="navbar-toggler-icon"></span>
+    </button>
+    <div className="collapse navbar-collapse" id="navbarNav">
+      <ul className="navbar-nav">
+        <li className="nav-item">
+        <NavLink to="/" className="navbar-brand">Home</NavLink>
         </li>
         <li className="nav-item">
-            <NavLink className="nav-link" to="/productos/accion">Accion</NavLink>
+        <NavLink to="/productos" className="navbar-brand">productos</NavLink>
         </li>
         <li className="nav-item">
-            <NavLink className="nav-link" to="/productos/aventura">Aventura</NavLink>
-
+        <NavLink to="/productos/accion" className="navbar-brand">Accion</NavLink>
         </li>
         <li className="nav-item">
-        <NavLink className="nav-link" to="/productos/zombie">Zombie</NavLink>
-
+        <NavLink to="/productos/aventura" className="navbar-brand">Aventura</NavLink>
         </li>
         <li className="nav-item">
-        <CartWidget />
-
+        <NavLink to="/productos/zombie" className="navbar-brand">Horror</NavLink>
         </li>
-        
       </ul>
     </div>
   </div>
+  <CartWidget/>
 </nav>
+
+
+
+
+
+
 
 
 
