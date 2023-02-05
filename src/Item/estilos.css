@@ -7,9 +7,10 @@ body{
 .card-itemList{
   padding:30px;
   display:flex;
+  justify-content: center;
   flex-direction:row;
   flex-wrap:wrap;
-  gap:100px;
+  gap:200px;
   align-items: flex-start;
 }
 .item{
