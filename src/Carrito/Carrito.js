@@ -1,5 +1,5 @@
 import { addDoc, collection, serverTimestamp  } from "firebase/firestore"
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useCarrito } from "./CustomProvider"
 import { db } from "../firebase"
 import Item from '../Item/Item'
@@ -23,6 +23,7 @@ const Carrito = () => {
                         phone: refAge.current.value,
                     },
                     products:[...valorDelContexto.productos],
+                    total:[valorDelContexto.cantidad],
                     date : serverTimestamp()
                 }
         
@@ -53,73 +54,64 @@ const Carrito = () => {
             
     }
 
-
    if(valorDelContexto.productos.length)    
    {
     return (
         <div>       
-                {id ? <h1>Orden generada con exito, su id es {id}</h1> : null}
-                <button onClick={valorDelContexto.vaciarCarrito} className="btn btn-warning btn-r">Vaciar Carrito</button>
-                <div className="item-r">
-                    {     
-                        valorDelContexto.productos.map((item)=>{
-                            return(
-                                <div className="carrito">
-                                    <div key={item.id}>
-                                        {
-                                                item.cantidad ? 
-                                                <div>
-                                                    <Item title={item.title} images={item.images} price={item.price * item.cantidad} id={item.id} stock={item.cantidad}/>
-
-                                            {
-                                                /*<div>
-                                                    <button onClick={() => valorDelContexto.borrarItem(item)} className="btn btn-danger btn-borrar">Borrar</button>
-                                                </div>*/
-                                            }
-                                                <button className="btn btn-success" onClick={valorDelContexto.agregarProducto}>Agregar</button>
-                                                <button className="btn btn-danger btn-red" onClick={valorDelContexto.borrarItem}>Borrar</button>
-                                            </div>
-                                            :
-                                            null
-                                        }
-                                        
+            <button onClick={valorDelContexto.vaciarCarrito} className="btn btn-warning btn-r">Vaciar Carrito</button>
+            <div className="item-r">
+            {     
+                valorDelContexto.productos.map((item)=>{
+                    return(
+                        <div className="carrito" key={item.id}>
+                            <div >
+                                {
+                                    item.cantidad ? 
+                                    <div>
+                                    <Item title={item.title} images={item.images} price={item.price * item.cantidad} id={item.id} stock={item.cantidad}/>
+                                        <button className="btn btn-success" onClick={() => valorDelContexto.agregarItem(item)}>Agregar</button>
+                                        <button className="btn btn-danger btn-red" onClick={() => valorDelContexto.borrarItem(item)}>Borrar</button>
                                     </div>
-                                        
-                                </div>
-                            )
-                        })
-                    }
-                    
-                </div>
-                
-                <div className="register">
-                <form onSubmit={handleSubmit} className="carrito-form">
-                <div className="mb-3">
-                <label htmlFor="exampleInputEmail1" className="form-label">Email</label>
-                    <input required ref={refEmail} type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
-                    <div id="emailHelp" className="form-text"></div>
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="exampleInputEmail1" className="form-label">Confirm Email</label>
-                    <input required ref={refEmailV} type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
-                    <div id="emailHelp" className="form-text"></div>
-                </div>
-                <div className="mb-3">
-                    <label className="form-label">Telefono</label>
-                    <input required ref={refAge} type="number" className="form-control" id="exampleInputPassword1"/>
-                </div>
-                    <button className="btn btn-primary btn-r">Finalizar compra</button>
-                </form>
+                                    :
+                                    // Problema
+                                    valorDelContexto.vaciarCarrito()
+                                    
+                                }
+                                
+                            </div>
+                                
+                        </div>
+                    )
+                })
+            }  
             </div>
-
+            <div className="register">
+            <form onSubmit={handleSubmit} className="carrito-form">
+            <div className="mb-3">
+            <label htmlFor="exampleInputEmail1" className="form-label">Email</label>
+                <input required ref={refEmail} type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
+                <div id="emailHelp" className="form-text"></div>
+            </div>
+            <div className="mb-3">
+                <label htmlFor="exampleInputEmail1" className="form-label">Confirm Email</label>
+                <input required ref={refEmailV} type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
+                <div id="emailHelp" className="form-text"></div>
+            </div>
+            <div className="mb-3">
+                <label className="form-label">Telefono</label>
+                <input required ref={refAge} type="number" className="form-control" id="exampleInputPassword1"/>
+            </div>
+                <button className="btn btn-primary btn-r">Finalizar compra</button>
+            </form>
         </div>
-
+    </div>
     )
    }
    else
    {
         if(!id)
         {
+                
             return(
                 <div>
                     <p>El carrito se encuentra vacio</p>
@@ -131,10 +123,8 @@ const Carrito = () => {
             return(
                 <><h3>Felicidades, su codigo es {id} gracias por comprar</h3></>
             )
-        }
-        
+        }  
    }
-    
 }
 
 export default Carrito

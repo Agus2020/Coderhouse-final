@@ -10,6 +10,7 @@ const ItemDetail = ({ producto }) => {
     const navigate = useNavigate();
 
     const { agregarProducto } = useCarrito()
+    const { agregarItem} = useCarrito()
     const [cantidad, setCantidad] = useState(1)
     const [confirmado, setConfirmado] = useState(false)
     
@@ -18,7 +19,6 @@ const ItemDetail = ({ producto }) => {
         setCantidad(cantidad)
         setConfirmado(true)
     }
-
     const handleClick = () => {
         agregarProducto(producto,cantidad)
         const MySwal = withReactContent(Swal)
