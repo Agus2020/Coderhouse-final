@@ -54,37 +54,41 @@ const Carrito = () => {
             
     }
 
-   if(valorDelContexto.productos.length)    
+   if(valorDelContexto.cantidad)    
    {
+    {
+        console.log(valorDelContexto)
+                     
+    }
     return (
         <div>       
             <button onClick={valorDelContexto.vaciarCarrito} className="btn btn-warning btn-r">Vaciar Carrito</button>
+            <h2>Valor total: US${valorDelContexto.cantidad}</h2>
             <div className="item-r">
             {     
                 valorDelContexto.productos.map((item)=>{
                     return(
                         <div className="carrito" key={item.id}>
+                            { item.cantidad ? 
                             <div >
-                                {
-                                    item.cantidad ? 
-                                    <div>
-                                    <Item title={item.title} images={item.images} price={item.price * item.cantidad} id={item.id} stock={item.cantidad}/>
-                                        <button className="btn btn-success" onClick={() => valorDelContexto.agregarItem(item)}>Agregar</button>
-                                        <button className="btn btn-danger btn-red" onClick={() => valorDelContexto.borrarItem(item)}>Borrar</button>
-                                    </div>
-                                    :
-                                    // Problema
-                                    valorDelContexto.vaciarCarrito()
+                                <div>
                                     
-                                }
-                                
+                                    <Item title={item.title} images={item.images} price={item.price * item.cantidad} id={item.id} stock={item.cantidad}/>
+                                    <button className="btn btn-success" onClick={() => valorDelContexto.agregarItem(item)}>Agregar</button>
+                                    <button className="btn btn-danger btn-red" onClick={() => valorDelContexto.borrarItem(item)}>Borrar</button>
+                                </div>
+                        
                             </div>
+                            : null}
+
                                 
                         </div>
                     )
                 })
             }  
             </div>
+
+            
             <div className="register">
             <form onSubmit={handleSubmit} className="carrito-form">
             <div className="mb-3">
@@ -110,8 +114,7 @@ const Carrito = () => {
    else
    {
         if(!id)
-        {
-                
+        {    
             return(
                 <div>
                     <p>El carrito se encuentra vacio</p>

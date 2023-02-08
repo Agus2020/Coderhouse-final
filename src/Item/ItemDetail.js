@@ -26,7 +26,7 @@ const ItemDetail = ({ producto }) => {
             title: <strong>Productos agregados!</strong>,
             icon: 'success'
           })
-        navigate("/")
+        navigate("/productos")
         }
 
 
