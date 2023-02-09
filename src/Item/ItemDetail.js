@@ -10,7 +10,6 @@ const ItemDetail = ({ producto }) => {
     const navigate = useNavigate();
 
     const { agregarProducto } = useCarrito()
-    const { agregarItem} = useCarrito()
     const [cantidad, setCantidad] = useState(1)
     const [confirmado, setConfirmado] = useState(false)
     

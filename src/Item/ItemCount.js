@@ -19,13 +19,7 @@ const ItemCount = ({handleOnAdd,init,stock}) => {
         }
     }
 
-    const handleChange = (e) => {
-        const codigo = e.key.charCodeAt()
-        if (codigo > 96 && codigo < 123) {
-        }else{
-            e.preventDefault()
-        }
-    }
+
 
 
     const handleConfirmar = () => { 
@@ -44,7 +38,7 @@ const ItemCount = ({handleOnAdd,init,stock}) => {
                 : 
 
                 <div className="button">
-                    <p>{count}</p>
+                    <h4>{count}</h4>
                         <button onClick={handleRestar} className="btn btn-light" disabled={estado}>-</button>
                         
                         <button onClick={handleSumar} className="btn btn-light" disabled={estado}>+</button>

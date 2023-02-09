@@ -47,13 +47,16 @@ body{
   height:500px;
   width:100%;
 }
-.button p{
+.button p, .button h4{
   text-align: center;
   width:auto;
 }
 .button button{
   margin:10px;
 }
+
+
+
 
 @media only screen and (max-width:1145px){
   .itemDetail{
@@ -69,3 +72,6 @@ body{
     margin:0px;
   }
 }
+
+/*ItemCount*/
+
